@@ -1,0 +1,32 @@
+# 0 K quasi-static reverse yz shear of the Sigma11 (557)/(77-1) Cu bicrystal.
+# Each step: change the tilt by dtilt (A), minimise at fixed box, record stress and structure.
+units metal
+boundary p p p
+atom_style atomic
+atom_modify map array
+read_data ${data}
+pair_style eam/alloy
+pair_coeff * * ${pot} Cu
+neighbor 2.0 bin
+neigh_modify every 1 delay 0 check yes
+compute cna all cna/atom 3.087
+variable ishcp atom c_cna==2
+compute nhcp all reduce sum v_ishcp
+thermo_style custom step pe pyz c_nhcp yz lz
+min_style cg
+minimize 0 1e-6 5000 50000
+variable lz0 equal lz
+variable Lz equal ${lz0}
+variable yz00 equal yz
+variable yz0 equal ${yz00}
+print "k strain yz_A tau_yz_GPa pe_eV nhcp" file ${outdir}/qs.dat
+variable dtilt equal ${dstrain}*${Lz}
+variable k loop ${nsteps}
+label loop
+  change_box all yz delta ${dtilt} remap units box
+  minimize 0 1e-6 5000 50000
+  print "${k} $((yz-v_yz0)/v_Lz) $(yz:%.5f) $(-pyz/1e4:%.5f) $(pe:%.4f) $(c_nhcp)" append ${outdir}/qs.dat
+  write_dump all custom ${outdir}/qs.${k}.dump id type x y z modify sort id format float %.10g
+  write_data ${outdir}/qs.${k}.data nocoeff
+next k
+jump SELF loop

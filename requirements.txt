@@ -1,0 +1,6 @@
+numpy
+scipy
+sympy
+matplotlib
+pillow
+ovito>=3.10   # needed only to analyse raw MD output (analyze_poly.py, analyze_qs_set.py)

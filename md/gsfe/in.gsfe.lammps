@@ -1,0 +1,38 @@
+# Generalised stacking-fault energy of Cu (Mishin EAM) on (111):
+# rigid shift of the upper half along ${dir}, atoms relaxed only along z.
+units metal
+boundary p p s
+atom_style atomic
+variable a equal 3.615
+variable px equal ${pxexpr}
+variable py equal ${pyexpr}
+lattice fcc ${a} orient x ${ox} orient y ${oy} orient z 1 1 1
+variable p112 equal ${a}*sqrt(6)/2
+variable p110 equal ${a}/sqrt(2)
+variable p111 equal ${a}*sqrt(3)
+region box block 0 $(v_nx*v_px) 0 $(v_ny*v_py) 0 $(12*v_p111) units box
+create_box 1 box
+create_atoms 1 box
+mass 1 63.546
+pair_style eam/alloy
+pair_coeff * * ${pot} Cu
+variable zmid equal 0.5*(bound(all,zmin)+bound(all,zmax))
+region upper block INF INF INF INF ${zmid} INF units box
+group upper region upper
+variable area equal lx*ly
+min_style cg
+fix fz all setforce 0 0 NULL
+minimize 0 1e-10 5000 50000
+variable E0 equal pe
+variable e0 equal ${E0}
+print "step disp_A gamma_mJm2" file ${out}
+variable i loop ${nsteps}
+label loop
+  variable d equal (${i}-1)*${dmax}/(${nsteps}-1)
+  variable dd equal ${dmax}/(${nsteps}-1)
+  if "${i} > 1" then "displace_atoms upper move ${dd} 0 0 units box"
+  minimize 0 1e-10 5000 50000
+  variable g equal (pe-${e0})/v_area*16021.766
+  print "${i} $(v_d:%.5f) $(v_g:%.4f)" append ${out}
+next i
+jump SELF loop

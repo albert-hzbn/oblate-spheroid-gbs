@@ -1,0 +1,18 @@
+# All-atom climbing NEB for partial emission at fixed applied strain (Sigma11 bicrystal).
+units metal
+boundary p p p
+atom_style atomic
+atom_modify map array
+read_data ${initial}
+pair_style eam/alloy
+pair_coeff * * ${pot} Cu
+neighbor 2.0 bin
+neigh_modify every 1 delay 0 check yes
+variable replica equal part
+timestep 0.001
+min_style fire
+fix path all neb 1.0
+thermo 100
+thermo_style custom step pe fmax fnorm
+neb 0.0 0.05 3000 4000 100 final ${finalcoords} verbosity verbose
+write_dump all custom ${outdir}/final.${replica}.dump id type x y z modify sort id

@@ -1,0 +1,37 @@
+# Uniaxial tension of a nanocrystalline Cu polycrystal (Mishin EAM).
+# Variables: data seed T erate(1/ps) nrun ndump outdir
+units metal
+boundary p p p
+atom_style atomic
+read_data ${data}
+mass 1 63.546
+pair_style eam/alloy
+pair_coeff * * ${pot} Cu
+neighbor 2.0 bin
+neigh_modify every 1 delay 0 check yes
+delete_atoms overlap 2.0 all all
+min_style cg
+minimize 0 1e-6 2000 20000
+reset_timestep 0
+timestep 0.002
+velocity all create $(2*v_T) ${seed} mom yes rot yes dist gaussian
+# anneal: 20 ps at 300 K, zero pressure
+fix ann all npt temp ${T} ${T} 0.1 aniso 0 0 1.0
+thermo 1000
+thermo_style custom step temp pe press pxx pyy pzz lx ly lz
+run 10000
+unfix ann
+reset_timestep 0
+variable L0 equal lx
+variable l0 equal ${L0}
+variable strain equal (lx-v_l0)/v_l0
+variable sxx equal -pxx/10000
+variable syy equal -pyy/10000
+variable szz equal -pzz/10000
+fix ten all deform 1 x erate ${erate} remap x
+fix dyn all npt temp ${T} ${T} 0.1 y 0 0 1.0 z 0 0 1.0 drag 1.0
+fix out all print 100 "$(step) $(v_strain:%.5f) $(v_sxx:%.5f) $(v_syy:%.5f) $(v_szz:%.5f) $(pe:%.4f)" file ${outdir}/stress.dat screen no title "step strain sxx_GPa syy_GPa szz_GPa pe_eV"
+dump snap all custom ${ndump} ${outdir}/dump.*.lmp id type x y z
+dump_modify snap sort id
+run ${nrun}
+write_data ${outdir}/final.data

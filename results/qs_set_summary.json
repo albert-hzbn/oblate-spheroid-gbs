@@ -1,0 +1,106 @@
+{
+ "c0_s30_reverse": {
+  "n_steps": 90,
+  "max_tau_GPa": 4.28736,
+  "k_c": 21,
+  "tau_c_GPa": 1.07838,
+  "strain_c": 0.07997572368656279,
+  "drop_GPa": 0.7949399999999999,
+  "d_nhcp": 8064,
+  "dxa_before": {
+   "shockley": 982.0,
+   "perfect": 0.0,
+   "other": 1963.6
+  },
+  "dxa_after": {
+   "shockley": 982.3,
+   "perfect": 0.0,
+   "other": 1963.6
+  },
+  "new_shockley_A": 0.2999999999999545
+ },
+ "c0_s03_positive": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.72463
+ },
+ "c0_s03_reverse": {
+  "n_steps": 80,
+  "max_tau_GPa": 4.82427,
+  "k_c": 17,
+  "tau_c_GPa": 0.53264,
+  "strain_c": 0.06400000000000018,
+  "drop_GPa": 0.23632000000000003,
+  "d_nhcp": 2304,
+  "dxa_before": {
+   "shockley": 982.2,
+   "perfect": 0.0,
+   "other": 1964.1
+  },
+  "dxa_after": {
+   "shockley": 0.0,
+   "perfect": 0.0,
+   "other": 1963.8
+  },
+  "new_shockley_A": -982.2
+ },
+ "c0_s30_positive": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.72562
+ },
+ "cp_s12_positive": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.72526
+ },
+ "cp_s12_reverse": {
+  "n_steps": 80,
+  "max_tau_GPa": 4.12231,
+  "k_c": 21,
+  "tau_c_GPa": 1.07914,
+  "strain_c": 0.07999999999999982,
+  "drop_GPa": 0.79558,
+  "d_nhcp": 8064,
+  "dxa_before": {
+   "shockley": 981.9,
+   "perfect": 0.0,
+   "other": 1963.5
+  },
+  "dxa_after": {
+   "shockley": 981.6,
+   "perfect": 0.0,
+   "other": 1963.4
+  },
+  "new_shockley_A": -0.2999999999999545
+ },
+ "cp_s21_positive": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.72681
+ },
+ "cp_s21_reverse": {
+  "n_steps": 80,
+  "max_tau_GPa": 3.46617,
+  "k_c": 15,
+  "tau_c_GPa": 0.4608,
+  "strain_c": 0.05600000000000016,
+  "drop_GPa": 0.15704,
+  "d_nhcp": 3072,
+  "dxa_before": {
+   "shockley": 982.2,
+   "perfect": 0.0,
+   "other": 1963.6
+  },
+  "dxa_after": {
+   "shockley": 981.9,
+   "perfect": 0.0,
+   "other": 1963.7
+  },
+  "new_shockley_A": -0.3000000000000682
+ },
+ "sigma7_positive": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.27745
+ },
+ "sigma7_reverse": {
+  "n_steps": 80,
+  "max_tau_GPa": 1.2824
+ }
+}

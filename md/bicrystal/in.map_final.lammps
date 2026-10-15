@@ -1,0 +1,20 @@
+# Map an emitted (post-instability) state into the cell of a lower applied strain and relax it.
+units metal
+boundary p p p
+atom_style atomic
+atom_modify map array
+read_data ${src}
+pair_style eam/alloy
+pair_coeff * * ${pot} Cu
+neighbor 2.0 bin
+neigh_modify every 1 delay 0 check yes
+compute cna all cna/atom 3.087
+variable ishcp atom c_cna==2
+compute nhcp all reduce sum v_ishcp
+change_box all yz final ${yz} remap units box
+min_style cg
+minimize 0 1e-8 20000 200000
+run 0
+print "MAPPED pe=$(pe:%.4f) tau_yz_GPa=$(-pyz/1e4:%.5f) nhcp=$(c_nhcp)"
+write_data ${outdata} nocoeff
+write_dump all custom ${outdump} id x y z modify sort id format float %.12g

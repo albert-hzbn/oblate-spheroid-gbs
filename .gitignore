@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# raw MD output (regenerate with md/)
+md/polycrystal/runs/
+md/bicrystal/runs/
+md/gsfe/log.*
+*.dump
+*.restart
+log.lammps
+log.*.lammps
+mesoscale/kap2024_figA1.jpeg

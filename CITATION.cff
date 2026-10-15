@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "Oblate-spheroidal shear transformation zone: analysis, data and simulations"
+authors:
+  - family-names: Linda
+    given-names: Albert
+  - family-names: Padmanabhan
+    given-names: K. A.
+repository-code: "https://github.com/albert-hzbn/oblate-spheroid-gbs"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Analysis of an oblate-spheroidal shear transformation zone and its implications for grain boundary sliding and superplastic flow"
+  authors:
+    - family-names: Linda
+      given-names: Albert
+    - family-names: Padmanabhan
+      given-names: K. A.
+  journal: "Journal of the Mechanics and Physics of Solids (submitted)"
+  year: 2026

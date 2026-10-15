@@ -1,0 +1,60 @@
+{
+  "checks_passed": [
+    "I1 quadrature versus closed form",
+    "I sum rule",
+    "I13 identity",
+    "sphere shear limit",
+    "thin disk shear limit (closed form)",
+    "dilatational trace shape independence 0.2",
+    "dilatational trace shape independence 0.5",
+    "dilatational trace shape independence 1.0",
+    "Kelvin differentiation and angular shear factor",
+    "negative diagonal shear lobe",
+    "Lorentzian Hilbert transform",
+    "Lorentzian normalisation",
+    "normalised disk kernel",
+    "regularised traction projection"
+  ],
+  "I1": 2.970688237841326,
+  "I3": 6.624994138676044,
+  "W2_I13": 4.872407867779478,
+  "S1313": 0.277200282562567,
+  "beta1": 0.445599434874866,
+  "beta2": 0.8888888888888887,
+  "volume_nm3": 0.8835729338221292,
+  "elastic_energy_eV": 0.40512140867631286,
+  "reference_energy_relative_error_percent": 6.610897020082329,
+  "volumetric_fraction": 0.3327568368899355,
+  "bias_eV": 0.0013787071210996848,
+  "bias_over_kT": 0.0206975831450342,
+  "rate_per_eta_attempt_frequency": 7.09162243114995e-10,
+  "eta_attempt_frequency_for_0.16_per_s": 225618328.6030571,
+  "FR_MPa": 2.947266250263197,
+  "strain_means": [
+    0.08509756097560976,
+    0.04926829268292682
+  ],
+  "strain_sample_sd": [
+    0.02049732284720224,
+    0.012249539563273187
+  ],
+  "shear_0.1_relative_error_percent": 17.51218114072799,
+  "shear_0.12_relative_error_percent": 41.014617368873594,
+  "dilatation_relative_error_percent": 1.4851485148514865,
+  "Q_over_elastic_mean": 4.046651367882272,
+  "Q_over_elastic_sample_sd": 1.4111530354610018,
+  "GB_ratio_median": 4.448275862068966,
+  "GB_ratio_min": 0.9130434782608696,
+  "GB_ratio_max": 48.0,
+  "GB_ratio_within_3_5_10": [
+    15,
+    24,
+    35
+  ],
+  "provenance": "Statistics use rounded rows transcribed in the previous SI, not an independent experimental dataset.",
+  "beta1_tensor": 1.782397739499464,
+  "beta1_HP2025": 1.77944,
+  "tensor_energy_factor_mean": 2.7995103822448115,
+  "Q_over_elastic_tensor_mean": 1.4456331379910938,
+  "Q_over_elastic_tensor_sd": 0.5047215001232954
+}
